@@ -14,6 +14,7 @@
 		F3E5CD58211BFF49006DEE54 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F3E5CD56211BFF49006DEE54 /* LaunchScreen.storyboard */; };
 		F3E5CD63211BFF4A006DEE54 /* FindMyCarTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3E5CD62211BFF4A006DEE54 /* FindMyCarTests.swift */; };
 		F3E5CD6E211BFF4A006DEE54 /* FindMyCarUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3E5CD6D211BFF4A006DEE54 /* FindMyCarUITests.swift */; };
+		F3E5CD7C211C05D8006DEE54 /* LocationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3E5CD7B211C05D8006DEE54 /* LocationService.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -47,6 +48,7 @@
 		F3E5CD69211BFF4A006DEE54 /* FindMyCarUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FindMyCarUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		F3E5CD6D211BFF4A006DEE54 /* FindMyCarUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FindMyCarUITests.swift; sourceTree = "<group>"; };
 		F3E5CD6F211BFF4A006DEE54 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		F3E5CD7B211C05D8006DEE54 /* LocationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationService.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -77,6 +79,7 @@
 		F3E5CD41211BFF42006DEE54 = {
 			isa = PBXGroup;
 			children = (
+				F3E5CD7B211C05D8006DEE54 /* LocationService.swift */,
 				F3E5CD4C211BFF42006DEE54 /* FindMyCar */,
 				F3E5CD61211BFF4A006DEE54 /* FindMyCarTests */,
 				F3E5CD6C211BFF4A006DEE54 /* FindMyCarUITests */,
@@ -193,6 +196,11 @@
 				TargetAttributes = {
 					F3E5CD49211BFF42006DEE54 = {
 						CreatedOnToolsVersion = 9.4.1;
+						SystemCapabilities = {
+							com.apple.BackgroundModes = {
+								enabled = 1;
+							};
+						};
 					};
 					F3E5CD5D211BFF4A006DEE54 = {
 						CreatedOnToolsVersion = 9.4.1;
@@ -257,6 +265,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				F3E5CD50211BFF42006DEE54 /* ViewController.swift in Sources */,
+				F3E5CD7C211C05D8006DEE54 /* LocationService.swift in Sources */,
 				F3E5CD4E211BFF42006DEE54 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
