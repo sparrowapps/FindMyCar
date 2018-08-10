@@ -77,8 +77,6 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
         for (region) in locationManager.rangedRegions {
             locationManager.stopRangingBeacons(in: region as! CLBeaconRegion)
         }
-
-        
     }
     
     @IBAction func start(_ sender: Any) {
@@ -91,13 +89,11 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
                                           style: UIAlertActionStyle.default,
                                           handler: {(alert: UIAlertAction!) in
                                             self.parkCar()
-
             }))
             
             alert.addAction(UIAlertAction(title: "취소",
                                           style: UIAlertActionStyle.default,
                                           handler: {(alert: UIAlertAction!) in
-                                            
                                             return
             }))
             
@@ -119,18 +115,10 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
                               discipline: "테스트",
                               coordinate: CLLocationCoordinate2D(latitude: (self.locationManager.location?.coordinate.latitude)!, longitude: (self.locationManager.location?.coordinate.longitude)!))
         self.mapView.addAnnotation(artwork)
-
     }
     
-    
-    
-    
     func mapView(_ mapView: MKMapView, didUpdate userLocation: MKUserLocation) {
-        
         macpCenter()
-        
-        
-        
     }
     
     func macpCenter() {
@@ -145,9 +133,6 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
     }
 
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        
-        //centerMapOnLocation(location: locations.last!)
-        
     }
     
     
@@ -156,12 +141,16 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
         
         for indBeacon in beacons {
             
-            
-            
-            
             switch indBeacon.proximity.rawValue {
-            
-            case CLProximity.immediate.rawValue, CLProximity.far.rawValue, CLProximity.near.rawValue:
+                
+            case CLProximity.immediate.rawValue:
+                if mapView.annotations.count == 1 {
+                    parkCar()
+                }
+                let distance = round(indBeacon.accuracy * 100.0) / 100.0
+                distanceLabel.text = "\(String(distance)) m"
+                
+            case CLProximity.far.rawValue, CLProximity.near.rawValue:
                 let distance = round(indBeacon.accuracy * 100.0) / 100.0
                 distanceLabel.text = "\(String(distance)) m"
             case CLProximity.unknown.rawValue: break
@@ -186,12 +175,10 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
     
     func locationManager(_ manager: CLLocationManager, didExitRegion region: CLRegion) {
         statusLabel.text = "이탈"
-
     }
     
     func locationManager(_ manager: CLLocationManager, didEnterRegion region: CLRegion) {
         statusLabel.text = "도착"
-        
     }
     
     func locationManager(_ manager: CLLocationManager, didDetermineState state: CLRegionState, for region: CLRegion) {
@@ -208,11 +195,6 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
             statusLabel.text = "알수없는상태"
         }
     }
-
-    
-    
-
-
 }
 
 class Artwork: NSObject, MKAnnotation {
@@ -234,7 +216,6 @@ class Artwork: NSObject, MKAnnotation {
         return locationName
     }
 }
-
 
 extension ViewController: MKMapViewDelegate {
     // 1
