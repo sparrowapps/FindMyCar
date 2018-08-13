@@ -144,9 +144,8 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
             switch indBeacon.proximity.rawValue {
                 
             case CLProximity.immediate.rawValue:
-                if mapView.annotations.count == 1 {
-                    parkCar()
-                }
+                parkCar()
+
                 let distance = round(indBeacon.accuracy * 100.0) / 100.0
                 distanceLabel.text = "\(String(distance)) m"
                 
